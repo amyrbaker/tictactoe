@@ -20,7 +20,18 @@
 /******************************************
 /* BASE STYLES
 /*******************************************/
-
+body {
+    display: flex;
+    flex-wrap: wrap;
+    width: 302px;
+    border: 1px solid black;
+    margin: 100px auto;
+}
+div {
+    width: 100px;
+    height: 100px;
+    border: 1px solid black;
+}
 
 
 
