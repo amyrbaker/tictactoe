@@ -2,21 +2,20 @@ class TicTacToe {
     constructor() {
         this.board = ['', '', '', '', '', '', '', '', '']
         this.solutions = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]]
-        this.boxes = document.querySelectorAll('.box')
         this.playing = true
+    }
+    addListeners() {
+        document.querySelectorAll('.box').forEach(box => box.addEventListener('click', this.makeMove.bind(this)))
+    }
+    makeMove(event) {
         this.xCount = this.board.filter(e => e === 'X').length
         this.yCount = this.board.filter(e => e === 'O').length
         this.mark = this.xCount === this.yCount ? 'X' : 'O'
-    }
-    addListeners() {
-        this.boxes.forEach(box => box.addEventListener('click', makeMove))
-    }
-    makeMove(event) {
-        if (!event.target.innerHTML && playing) {
+        if (!event.target.innerHTML && this.playing) {
             event.target.innerHTML = this.mark
             this.board[event.target.id] = this.mark
         }
-        checkWin()
+        this.checkWin()
     }
     checkWin() {
         this.solutions.forEach(arr => {
@@ -29,8 +28,14 @@ class TicTacToe {
             }
         })
     }
+    
 }
 let game = new TicTacToe
+game.addListeners()
+
+
+// Original idea without OOP:
+
 
 // let board = ['', '', '', '', '', '', '', '', '']
 // let solutions = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]]
